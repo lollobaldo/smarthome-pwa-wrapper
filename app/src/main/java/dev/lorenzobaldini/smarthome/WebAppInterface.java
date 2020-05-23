@@ -22,7 +22,7 @@ public class WebAppInterface {
     @JavascriptInterface
     public static void turnOffLCD() {
         try {
-            lastBrightnessValue = Integer.parseInt(execCmd("su -c cat " + filePath).trim());
+            lastBrightnessValue = Integer.parseInt(Utils.execCmd("su -c cat " + filePath).trim());
             Process su = Runtime.getRuntime().exec("su -c echo 0 > " + filePath);
         } catch (Exception e){
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -37,10 +37,5 @@ public class WebAppInterface {
         } catch (Exception e){
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private static String execCmd(String cmd) throws java.io.IOException {
-        java.util.Scanner s = new java.util.Scanner(Runtime.getRuntime().exec(cmd).getInputStream()).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
     }
 }

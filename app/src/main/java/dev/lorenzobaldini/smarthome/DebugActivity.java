@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-public class MainActivity extends Activity {
+public class DebugActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,6 @@ public class MainActivity extends Activity {
         setContentView(myWebView);
         myWebView.addJavascriptInterface(new WebAppInterface(this), "AndroidWrapper");
         myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.loadUrl("https://smarthome.lorenzobaldini.dev");
+        myWebView.loadUrl("http://192.168.1.102:3000/");
     }
 }
